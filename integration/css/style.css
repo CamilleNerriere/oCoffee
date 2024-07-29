@@ -95,21 +95,22 @@ body {
     padding: 0 4%;
 }
 
-.news__articles{
+.articles{
     display:flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.news__article{
+.article{
     width:30%;
 }
 
-.news__article__img__container{
+.article__img__container{
     width: 100%;
     height:60%;
 }
 
-.news__article__img{
+.article__img{
     width:100%;
     height:100%;
     object-fit: cover;
@@ -121,7 +122,7 @@ body {
     font-weight:600em;
     margin-bottom: 1em;;
 }
-.news__article__description{
+.article__description{
     margin: 1em 0 1.5em;
 }
 
@@ -134,3 +135,39 @@ body {
     margin-top:1em;
     border-radius: 0.5em;
 }
+
+.catalog__header{
+    margin:4%;
+}
+
+.catalog__title{
+    width: 100%;
+    height:30em;
+    background-image: url("../assets/coffees/105589090.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalog__title .section__title{
+    color: var(--lighter-brown);
+}
+
+.catalog__articles{
+    padding: 0 4%;
+}
+
+.show__more{
+    display:none;
+}
+
+.show__more__btn{
+    margin-top:1em;
+    display: flex;
+    justify-content: center;
+}
+
+
