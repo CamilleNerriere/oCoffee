@@ -73,7 +73,7 @@ body {
     margin-bottom: 1.5em;
 }
 
-.presentation__about__btn{
+.presentation__about__btn, .show__catalog__btn{
     color:var(--dark-brown);
     background-color: var(--button-brown) ;
     color:var(--button-text);
@@ -183,4 +183,36 @@ body {
 .catalog__select{
     display:flex;
     justify-content: flex-end;
+}
+
+.article__image{
+    height:30em;
+    background-image: url("../assets/coffees/105589090.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:4em;
+}
+
+.detail__article{
+    padding: 0 4em;
+}
+
+.article__informations{
+    margin-top: 1.5em;
+    font-size: 0.8em;
+    line-height: 1.2em;
+}
+
+.show__catalog{
+    display: flex;
+    margin: 1.5em 4em;
+    justify-content: center;
+}
+
+.strong{
+    font-weight:700;
 }
