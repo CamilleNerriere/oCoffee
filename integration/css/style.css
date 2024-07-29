@@ -1,7 +1,7 @@
 :root {
     --main-brown: #0c0601;
     --dark-brown: #552b09;
-    --light-brown:#F7DBB9; 
+    --light-brown:#ece1d2; 
     --button-brown:#c7b093; 
     --button-text:#ffffff;
     --lighter-brown:#f5ecec; 
@@ -38,7 +38,7 @@ body {
 
 .logo__title{
     color: var(--dark-brown);
-    font-size: 2em;
+    font-size: 3em;
     font-weight: 400;
     letter-spacing: 0.1em;
 }
@@ -46,9 +46,13 @@ body {
 .logo__srv, .logo__title{
     display: block;
 }
-
+.header__logo__img__container{
+    height:10em;
+}
 .logo__srv{
     height:100%;
+    object-fit: cover;
+    display:block;
 }
 
 .presentation{
@@ -81,7 +85,52 @@ body {
 }
 
 .section__title{
-    font-size:1.5em;
+    font-size:2em;
     color:var(--dark-brown);
     margin-bottom: 0.5em;
+}
+
+.news{
+    margin-top: 5%;
+    padding: 0 4%;
+}
+
+.news__articles{
+    display:flex;
+    justify-content: space-between;
+}
+
+.news__article{
+    width:30%;
+}
+
+.news__article__img__container{
+    width: 100%;
+    height:60%;
+}
+
+.news__article__img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display: block;
+}
+
+.article__title{
+    font-size: 1.5em;
+    font-weight:600em;
+    margin-bottom: 1em;;
+}
+.news__article__description{
+    margin: 1em 0 1.5em;
+}
+
+.article__btn{
+    color:var(--dark-brown);
+    background-color: var(--light-brown) ;
+    font-weight: 500;
+    display:inline;
+    padding:0.5em;
+    margin-top:1em;
+    border-radius: 0.5em;
 }
