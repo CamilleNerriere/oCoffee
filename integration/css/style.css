@@ -170,4 +170,17 @@ body {
     justify-content: center;
 }
 
+.select{
+    color:var(--dark-brown);
+    background-color: var(--light-brown); 
+    font-weight: 500;
+    display:inline;
+    padding:0.5em;
+    margin-top:4em;
+    border-radius: 0.5em;
+}
 
+.catalog__select{
+    display:flex;
+    justify-content: flex-end;
+}
