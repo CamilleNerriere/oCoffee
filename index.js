@@ -31,6 +31,10 @@ app.use(router);
 
 // middleware 404 à importer et créer dans les middlewares
 
+const notFound = require('./app/middlewares/404')
+
+app.use(notFound); 
+
 const port = process.env.PORT || 3000; 
 
 app.listen(port, () => {

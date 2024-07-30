@@ -154,7 +154,7 @@ body {
 .catalog__title{
     width: 100%;
     height:30em;
-    background-image: url("../assets/coffees/105589090.png");
+    background-image: url("/img/coffees/105589090.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -198,7 +198,7 @@ body {
 
 .article__image{
     height:30em;
-    background-image: url("../assets/coffees/105589090.png");
+    background-image: url("/img/coffees/105589090.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
