@@ -4,7 +4,6 @@ const mainController = {
     async homePage(req, res) {
         try {
             const coffees = await dataMapper.getCoffees();
-            console.log(coffees);
             res.render('index', {coffees : coffees});
         } catch (error) {
             console.log('NAME', error.name);
@@ -18,7 +17,6 @@ const mainController = {
     async articles(req,res) {
         try {
             const coffees = await dataMapper.getCoffees();
-            console.log(coffees);
             res.render('articles', {coffees});
         } catch (error) {
             console.log('NAME', error.name);

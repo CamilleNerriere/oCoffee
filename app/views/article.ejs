@@ -1,26 +1,36 @@
 <%- include('partials/header') %>
 
         <main>
+            <% if(locals.coffee) { %>
+                <div class="article__image">
+                    <img class="article__img" src="/img/coffees/compressed/<%= coffee.reference %>.webp" alt="">
 
-            <div class="article__image">
-                <img class="article__img" src="/img/coffees/compressed/100955894.webp" alt="">
-
-            </div>
-
-            <div>
-
-                <div class="detail__article">
-                    <h3 class="article__title">Brazilian Santos</h3>
-                    <p>Café doux et lisse avec un profil de saveur de noisette.</p>
-                    <div class="article__informations">
-                        <p><em class="strong">Origine :</em> Brésil</p>
-                        <p><em class="strong">Prix au kilo :</em> 17.80 €</p>
-                        <p><em class="strong">Caractéristique principale :</em> Doux</p>
-                        <p><em class="strong">Disponible :</em> Oui</p>
-                    </div>
                 </div>
-                <div class="show__catalog"><a class="show__catalog__btn" href="/articles">Catalogue</a></div>
-            </div>
+
+                <div>
+
+                    
+                    <div class="detail__article">
+                        <h3 class="article__title"><%= coffee.name %></h3>
+                        <p><%= coffee.description %></p>
+                        <div class="article__informations">
+                            <p><em class="strong">Origine :</em> <%= coffee.origin%></p>
+                            <p><em class="strong">Prix au kilo :</em> <%= coffee.price %> €</p>
+                            <p><em class="strong">Caractéristique principale :</em> <%= coffee.main_feature %></p>
+                            <p><em class="strong">Disponible :</em> 
+                            <% if(coffee.available === true) {%>
+                                Oui 
+                            <% } else { %>
+                                Non
+                            <% } %>
+                            </p>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <p>Aucun article correspondant</p>
+                    <% } %>
+                    <div class="show__catalog"><a class="show__catalog__btn" href="/articles">Catalogue</a></div>
+                </div>
 
         </main>
 <%- include('partials/footer') %>
