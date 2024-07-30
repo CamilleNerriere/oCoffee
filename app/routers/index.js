@@ -6,7 +6,7 @@ router.get('/', mainController.homePage);
 
 router.get('/articles', mainController.articles);
 
-router.get('/article', mainController.article);
+router.get('/article/:id', mainController.article);
 
 
 module.exports = router;
