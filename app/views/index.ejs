@@ -36,12 +36,9 @@
                             <h3 class="article__title"><%= coffees[index].name %></h3>
                             <p><%= coffees[index].description %></p>
                         </div>
-                        <div class="article__btn"><a href="/article">Découvrir</a></div>
+                        <div class="article__btn"><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
                     </div>
                 <% } %>
-
-                
-
 
 
                 <% } else { %>
