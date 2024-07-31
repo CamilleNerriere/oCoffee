@@ -26,6 +26,17 @@ const dataMapper = {
         const coffee = await client.query(query); 
 
         return coffee.rows[0];
+    }, 
+    /**
+     * 
+     * @returns {Promise} les catégories de café
+     */
+    async getCoffeesCategories() {
+        const query = 'SELECT main_feature FROM coffee GROUP BY main_feature;'
+
+        const coffeesCategories = await client.query(query);
+
+        return coffeesCategories.rows;
     }
 
 };

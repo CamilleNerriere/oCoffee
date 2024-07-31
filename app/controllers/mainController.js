@@ -17,7 +17,9 @@ const mainController = {
     async articles(req,res) {
         try {
             const coffees = await dataMapper.getCoffees();
-            res.render('articles', {coffees});
+            const categories = await dataMapper.getCoffeesCategories();
+    
+            res.render('articles', {coffees, categories});
         } catch (error) {
             console.log('NAME', error.name);
             console.log('CAUSE', error.cause);

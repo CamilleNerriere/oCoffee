@@ -6,13 +6,19 @@
             <div class="catalog__title">
                 <h2 class="section__title">Notre Catalogue</h2>
             </div>
+
+
             <div class="catalog__select">
+                <label class= "sr-only" for="category">Choississez une catégorie</label>
                 <select class="select" id="category" name="category">
                     <option value="" selected disabled>-- Choisissez une catégorie --</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="option4">Option 4</option>
+
+                    <% if(locals.categories?.length) %> {
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.main_feature %>"><%= category.main_feature %></option>
+                        <% }) %>
+                    }
+    
                 </select>
             </div>
         </div>
@@ -21,14 +27,14 @@
 
             <div class="catalog__articles">
 
-                <div class="articles">
+                <div class="articles" id="articles__container">
 
-                    <% if (coffees?.length) { %>
+                    <% if (locals.coffees?.length) { %>
                         <% for (let index = 0; index < coffees.length; index++) { %>
                             <% if (index < 3) { %>
-                                <div class="article">
+                                <div class="article top__article <%= coffees[index].main_feature %>">
                             <% } else { %>
-                                <div class="article show__more">
+                                <div class="article article__hidden show__more <%= coffees[index].main_feature %>">
                             <% } %>
                                 <div class="article__img__container">
                                     <img class="article__img" src="/img/coffees/compressed/<%= coffees[index].reference %>.webp" alt="">
@@ -37,7 +43,7 @@
                                     <h3 class="article__title"><%= coffees[index].name %></h3>
                                     <p><%= coffees[index].description %></p>
                                 </div>
-                                <div class="article__btn"><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
+                                <div class="article__btn" ><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
                             </div>
                         <% } %>
                     <% } else { %>
@@ -49,7 +55,7 @@
                 </div>
 
             </div>
-            <div class="show__more__btn"><a class="article__btn" href="#">Voir tout</a></div>
+            <div class="show__more__btn" id="show__more__btn"><a class="article__btn" href="#">Voir tout</a></div>
         </div>
 
     </main>
