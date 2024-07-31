@@ -11,6 +11,10 @@ const path = require('path');
 const express = require('express'); 
 const app = express(); 
 
+//import des sessions 
+
+const session = require('express-session');
+
 // import du router 
 
 const router = require('./app/routers'); 
@@ -24,6 +28,26 @@ app.set('views', securedPathToViews);
 
 const securedPathToAssets = path.join(__dirname, 'public'); 
 app.use(express.static(securedPathToAssets)); 
+
+// mise en place des sessions 
+
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: process.env.SECRET,
+    cookie: {
+      secure: false,
+      maxAge: (1000*60*60*24) // ça fait 24h
+    }
+  }))
+  
+  app.use((req, res, next) => {
+    if (req.session.cart){
+      app.locals.cart = req.session.cart;
+    }
+    next();
+  });
+  
 
 // branchement du router
 

@@ -1,0 +1,75 @@
+<%- include('partials/header') %>
+
+<main>
+    <h2 class="cart__title"> Votre panier</h2>
+
+    <section class="cart__section">
+
+        <form action="" method="post" class="cart__form">
+            
+        
+
+        <table class="recap">
+            <thead class="recap__head">
+                <tr class="recap__row">
+                    <th class="recap__cell-head">Vos produits</th>
+                    <th class="recap__cell-head">Prix unitaire</th>
+                    <th class="recap__cell-head">Quantité</th>
+                    <th class="recap__cell-head">Sous-total</th>
+                </tr>
+            </thead>
+
+            <tbody class="recap__body">
+                <tr class="recap__row">
+                    <td class="recap__cell-product">
+                        <div class="cell__flex">
+                            <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/100955890.webp" alt=""></div>
+                            <div class="product__title">Nom du produit</div>
+                        </div>
+                        
+                    </td>
+                    <td class="recap__cell">15 €</td>
+                    <td class="recap__cell">
+                        <label class="recap__label sr-only" for="quantity_0">Quantité produit 1</label>
+                        <input type="select" id="quantity_0" name="quantities[0]" value="1" min="0" class="recap__quantity">
+                        <a href="#" class="recap__delete">Supprimer</a>
+                    </td>
+                    <td class="recap__cell">15 €</td>
+                </tr>
+                <tr class="recap__row">
+                    <td class="recap__cell-product">
+                        <div class="cell__flex">
+                            <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/100955890.webp" alt=""></div>
+                            <div class="product__title">Nom du produit</div>
+                        </div>
+                    </td>
+                    <td class="recap__cell">15 €</td>
+                    <td class="recap__cell">
+                        <label class="recap__label sr-only" for="quantity_1">Quantité produit 1</label>
+                        <input type="select" id="quantity_1" name="quantities[0]" value="1" min="0" class="recap__quantity">
+                        <a href="#" class="recap__delete">Supprimer</a>
+                    </td>
+                    <td class="recap__cell">15 €</td>
+                </tr>
+            </tbody>
+
+            <tfoot class="recap__foot">
+                <tr class="recap__row">
+                    <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products">1 produit(s)</span></th>
+                    <td class="recap__cell-total-price" colspan="2"><span class="recap__total_price-text">Total de la commande :</span> <span class="recap__total_price-number"> 30 €</span></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="cart__btn">
+            <button type="submit" class="btn__submit">Passer la commande</button>
+        </div>
+
+    </form>
+
+    </section>
+
+
+</main>
+
+<%- include('partials/footer') %>

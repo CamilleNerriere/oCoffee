@@ -26,10 +26,12 @@
                             </p>
                         </div>
                     </div>
+                    <div class="show__catalog"><a class="show__catalog__btn" href="/cart/<%= coffee.id %>">Ajouter au panier</a></div>
                     <% } else { %>
                         <p>Aucun article correspondant</p>
                     <% } %>
-                    <div class="show__catalog"><a class="show__catalog__btn" href="/articles">Catalogue</a></div>
+                    
+                    <div class="go__back" ><a id="go__back"href="#">Retour au catalogue</a></div>
                 </div>
 
         </main>

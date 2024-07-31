@@ -42,7 +42,7 @@ const mainController = {
 
             res.send(error.message);
         };
-    }
+    }, 
 
 };
 

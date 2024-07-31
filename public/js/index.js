@@ -1,6 +1,7 @@
 
 // gestion du menu déroulant en responsive 
 
+
 //callback pour afficher le menu 
 
 function showMenu(event){
@@ -16,8 +17,9 @@ function showMenu(event){
 //event listener 
 
 const menu = document.querySelector('#menu__responsive');
-menu.addEventListener('click', showMenu); 
-
+if(menu){
+    menu.addEventListener('click', showMenu); 
+};
 
 // gestion de l'affichage des articles 
 
@@ -35,10 +37,6 @@ function showMoreOrLessArticles(event) {
             article.classList.add('show__more');
             btn.textContent = 'Voir plus';
             articlesContainer.scrollIntoView({behavior:'smooth'});
-            // window.scrollTo({
-            //     top: articlesContainer.offsetTop,
-            //     behavior: 'smooth'
-            // });
         }
         
     };
@@ -46,7 +44,11 @@ function showMoreOrLessArticles(event) {
 
 
 const showMoreButton = document.querySelector('#show__more__btn'); 
-showMoreButton.addEventListener('click', showMoreOrLessArticles); 
+
+if(showMoreButton){
+    showMoreButton.addEventListener('click', showMoreOrLessArticles); 
+};
+
 
 // gestion de l'affichage par catégories
 
@@ -71,4 +73,16 @@ function showCoffeesByCategory(){
 
 const categorySelect = document.querySelector('#category');
 
-categorySelect.addEventListener('change', showCoffeesByCategory);
+if(categorySelect){
+    categorySelect.addEventListener('change', showCoffeesByCategory);
+};
+
+// gestion retour page précédente
+
+const goBackLink = document.getElementById('go__back');
+goBackLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('coucou');
+    history.back();
+})
+

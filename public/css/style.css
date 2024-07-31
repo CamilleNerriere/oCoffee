@@ -84,7 +84,7 @@ body {
     margin-bottom: 1.5em;
 }
 
-.presentation__about__btn, .show__catalog__btn{
+.presentation__about__btn{
     color:var(--dark-brown);
     background-color: var(--dark-brown) ;
     color:var(--light-brown);
@@ -94,6 +94,8 @@ body {
     margin-top:0.5em;
     border-radius: 0.5em;
 }
+
+
 
 .section__title{
     font-size:2em;
@@ -137,7 +139,7 @@ body {
     margin: 1em 0 1.5em;
 }
 
-.article__btn{
+.article__btn, .show__catalog__btn{
     color:var(--dark-brown);
     background-color: var(--light-brown) ;
     font-weight: 500;
@@ -145,6 +147,10 @@ body {
     padding:0.5em;
     margin-top:1em;
     border-radius: 0.5em;
+}
+
+.go__back{
+    text-align:center;
 }
 
 .catalog__header{
@@ -240,7 +246,80 @@ body {
     border-width: 0;
 }
 
+.cart__title{
+    text-align: center;
+    padding: 2em;
+    border-bottom: var(--light-brown) solid 1px;
+    border-top: var(--light-brown) solid 1px;
+    margin: 2em;
+}
 
+.cart__btn{
+    padding: 2em;
+    text-align: center;
+    border-bottom: var(--light-brown) solid 1px;
+    border-top: var(--light-brown) solid 1px;
+    margin: 2em;
+}
+
+.recap{
+    margin: 2em;
+    width:100%;
+}
+
+.recap__cell, .recap__cell-head, .recap__cell-product, .recap__cell-total-price{
+    width:25%;
+    height: 4em;
+    text-align:center;
+    vertical-align: middle;
+
+}
+
+.recap__cell-total-price{
+    vertical-align:bottom;
+}
+
+.recap__total_price-number{
+    font-size: 1.2em;
+}
+
+.product__image__container{
+    width:2em;
+    height:2em;
+    position:relative;
+    overflow:hidden;
+}
+.product__image{
+    position:absolute;
+    height:100%;
+    left:-20%;
+
+}
+
+.cell__flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.recap__cell input{
+    width:2em;
+}
+
+.recap__delete{
+    font-size:0.7em;
+}
+
+.btn__submit{
+    color: var(--dark-brown);
+    background-color: var(--light-brown);
+    font-weight: 500;
+    display: inline;
+    padding: 1em 2em;
+    border-radius: 2em;
+    border: none;
+    font-size: 0.9em;
+}
 
 
 @media (max-width: 768px) {
