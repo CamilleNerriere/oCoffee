@@ -33,7 +33,6 @@ const mainController = {
         try {
             const id = req.params.id;
             const coffee = await dataMapper.getOneCoffeeById(id);
-            console.log(coffee);
             res.render('article', {coffee});
         } catch (error) {
             console.log('NAME', error.name);

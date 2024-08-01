@@ -15,18 +15,36 @@ const cartController = {
         }
 
         if (!req.session.cart) {
-            req.session.cart = [];
+            req.session.cart = {};
         }
-
-        const existingProduct = req.session.cart.find(article => article.id === id);
+        
         const result = await dataMapper.getOneCoffeeById(id);
 
         if (!result) {
             next();
             return;
         }
-        req.session.cart.push(result);
-        console.log(req.session.cart);
+
+        const idString = id.toString();
+
+        if(req.session.cart.hasOwnProperty(idString)){
+            req.session.cart[idString].quantity+=1;
+            console.log ('+1');
+        } else {
+            req.session.cart[idString] = result;
+                req.session.cart[idString].quantity = 1;
+        }
+
+        // Object.keys(req.session.cart).forEach(key => {
+        //     if (key !== idString) {
+                
+        //     } else {
+        //         req.session.cart[idString].quantity+=1;
+        //     };
+        // });
+        
+        console.log('panier', req.session.cart)
+
 
         res.redirect('/cart');
     }

@@ -20,13 +20,19 @@
                             <p><em class="strong">Disponible :</em> 
                             <% if(coffee.available === true) {%>
                                 Oui 
-                            <% } else { %>
-                                Non
-                            <% } %>
                             </p>
                         </div>
                     </div>
                     <div class="show__catalog"><a class="show__catalog__btn" href="/cart/<%= coffee.id %>">Ajouter au panier</a></div>
+
+                            <% } else { %>
+                                Non
+                            </p>
+                        </div>
+                    </div>
+                    <div class="show__catalog"><a class="show__catalog__btn" href="#">En rupture de stock</a></div>
+                            <% } %>
+
                     <% } else { %>
                         <p>Aucun article correspondant</p>
                     <% } %>
