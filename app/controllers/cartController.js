@@ -34,14 +34,6 @@ const cartController = {
             req.session.cart[idString] = result;
                 req.session.cart[idString].quantity = 1;
         }
-
-        // Object.keys(req.session.cart).forEach(key => {
-        //     if (key !== idString) {
-                
-        //     } else {
-        //         req.session.cart[idString].quantity+=1;
-        //     };
-        // });
         
         console.log('panier', req.session.cart)
 

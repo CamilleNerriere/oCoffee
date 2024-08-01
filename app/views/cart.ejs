@@ -19,38 +19,38 @@
                 </tr>
             </thead>
 
+          
+
             <tbody class="recap__body">
-                <tr class="recap__row">
-                    <td class="recap__cell-product">
-                        <div class="cell__flex">
-                            <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/100955890.webp" alt=""></div>
-                            <div class="product__title">Nom du produit</div>
-                        </div>
-                        
-                    </td>
-                    <td class="recap__cell">15 €</td>
-                    <td class="recap__cell">
-                        <label class="recap__label sr-only" for="quantity_0">Quantité produit 1</label>
-                        <input type="select" id="quantity_0" name="quantities[0]" value="1" min="0" class="recap__quantity">
-                        <a href="#" class="recap__delete">Supprimer</a>
-                    </td>
-                    <td class="recap__cell">15 €</td>
-                </tr>
-                <tr class="recap__row">
-                    <td class="recap__cell-product">
-                        <div class="cell__flex">
-                            <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/100955890.webp" alt=""></div>
-                            <div class="product__title">Nom du produit</div>
-                        </div>
-                    </td>
-                    <td class="recap__cell">15 €</td>
-                    <td class="recap__cell">
-                        <label class="recap__label sr-only" for="quantity_1">Quantité produit 1</label>
-                        <input type="select" id="quantity_1" name="quantities[0]" value="1" min="0" class="recap__quantity">
-                        <a href="#" class="recap__delete">Supprimer</a>
-                    </td>
-                    <td class="recap__cell">15 €</td>
-                </tr>
+
+                <% if(locals.cart) {%>
+
+                    <% for( const product in cart) {%>
+                    
+                        <tr class="recap__row">
+                            <td class="recap__cell-product">
+                                <div class="cell__flex">
+                                    <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/<%= cart[product].reference %>.webp" alt=""></div>
+                                    <div class="product__title"> <%= cart[product].name %> </div>
+                                </div>
+                                
+                            </td>
+                            <td class="recap__cell"><%= cart[product].price %> €</td>
+                            <td class="recap__cell">
+                                <label class="recap__label sr-only" for="quantity_<%= cart[product].id%>">Quantité produit 1</label>
+                                <input type="select" id="quantity_<%= cart[product].id%>" name="quantities[<%= cart[product].id%>]" value="<%= cart[product].quantity %>" min="0" class="recap__quantity">
+                                <a href="#" class="recap__delete">Supprimer</a>
+                            </td>
+                            <td class="recap__cell">
+                                <% const quantity = cart[product].quantity; %>
+                                <% const totalPrice = cart[product].price * quantity; %>
+                                <%= totalPrice %>  €</td>
+                        </tr>
+                    
+                    <% } %>
+                    
+            <% } %>
+
             </tbody>
 
             <tfoot class="recap__foot">

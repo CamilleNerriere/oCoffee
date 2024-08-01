@@ -286,19 +286,22 @@ body {
 .product__image__container{
     width:2em;
     height:2em;
-    position:relative;
+    /* position:relative; */
     overflow:hidden;
 }
 .product__image{
-    position:absolute;
+    /* position:absolute; */
     height:100%;
-    left:-20%;
+    width:100%
+}
 
+.product__title{
+    margin-left:5em;
 }
 
 .cell__flex{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 }
 
