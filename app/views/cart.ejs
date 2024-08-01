@@ -55,13 +55,15 @@
 
             <tfoot class="recap__foot">
                 <tr class="recap__row">
-                    <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products">1 produit(s)</span></th>
+                    <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products" id="recap__total_products">1 produit(s)</span></th>
                     <td class="recap__cell-total-price" colspan="2"><span class="recap__total_price-text">Total de la commande :</span> <span id="recap__total_price-number">
                         <% let total = 0 %>
-                        <% for( const product in cart) {%>
-                        <% total = total + cart[product].price * cart[product].quantity %> 
-                        <%}%>
-                        <%= total %>
+                        <% if(locals.cart){ %>
+                            <% for( const product in locals.cart) {%>
+                            <% total = total + cart[product].price * cart[product].quantity %> 
+                            <%}%>
+                            <%= total %>
+                        <% } %>
                     </span>€</td>
                 </tr>
             </tfoot>

@@ -99,6 +99,7 @@ if (goBackLink) {
 
 // gestion du panier (mise à jour de l'affichage du prix total)
 
+
 // * récupération des prix des articles dans un array et transformation en Float
 
 const pricesAsStr = document.querySelectorAll('.price');
@@ -141,28 +142,79 @@ function showTotalPrice() {
 
 const raws = document.querySelectorAll('.recap__row-product');
 
-function showSubtotalPrice(){
+function showSubtotalPrice() {
     raws.forEach(raw => {
         const price = Number.parseFloat(raw.querySelector('.price').textContent);
         const quantity = Number.parseInt(raw.querySelector('.quantity').value);
         const subtotal = price * quantity;
         console.log(quantity, price, subtotal)
-        raw.querySelector('.total__price').textContent = subtotal.toString(); 
-    
-    });  
+        raw.querySelector('.total__price').textContent = subtotal.toString();
+
+    });
 }
 
-if(quantitiesAsStr){
+if (quantitiesAsStr) {
     quantitiesAsStr.forEach(quantity => {
         quantity.addEventListener('change', () => {
             showTotalPrice();
             showSubtotalPrice();
+            showNumberOfProduct();
         })
     });
 };
 
+//---------------------
+
+// *Afficher le nombre d'article dans le panier
+
+let numberOfProduct = 0;
+
+function showNumberOfProduct() {
+
+    if (quantitiesAsStr.length === 0){
+        document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit`;
+    } else {quantitiesAsStr.forEach(quantity => {
+        numberOfProduct += Number.parseInt(quantity.value);
+        console.log(numberOfProduct)
+        if (numberOfProduct === 1) {
+            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit`;
+        } else {
+            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produits`;
+        }
+    });
+    }
+    }
+
+if(quantitiesAsStr.length > 0){
+    showNumberOfProduct();
+};    
+    
+    // Pour l'instant j'ai ajouté à l'event listener sur les quantités la modification des nombres de produit, en attendant de faire un objet pour réorganiser
+    
+
+
+
+
 //------------------
 
+// Supprimer l'article du panier
 
+
+
+if (raws) {
+    raws.forEach(raw => {
+        raw.querySelector('.recap__delete').addEventListener('click', (event) => {
+            event.preventDefault();
+            raw.remove();
+        }
+        );
+    }
+    );
+};
+
+
+// surveiller les quantités : variable qui se met à jour 
+
+//gérer le bug où on garde la quantité quand on supprime
 
 
