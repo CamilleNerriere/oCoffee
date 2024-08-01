@@ -27,7 +27,7 @@
 
                     <% for( const product in cart) {%>
                     
-                        <tr class="recap__row">
+                        <tr class="recap__row-product">
                             <td class="recap__cell-product">
                                 <div class="cell__flex">
                                     <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/<%= cart[product].reference %>.webp" alt=""></div>
@@ -35,17 +35,17 @@
                                 </div>
                                 
                             </td>
-                            <td class="recap__cell"><%= cart[product].price %> €</td>
+                            <td class="recap__cell"><em class="price"><%= cart[product].price %></em> €</td>
                             <td class="recap__cell">
                                 <label class="recap__label sr-only" for="quantity_<%= cart[product].id%>">Quantité produit 1</label>
-                                <input type="select" id="quantity_<%= cart[product].id%>" name="quantities[<%= cart[product].id%>]" value="<%= cart[product].quantity %>" min="0" class="recap__quantity">
+                                <input type="select" class="quantity" id="quantity_<%= cart[product].id%>" name="quantities[<%= cart[product].id%>]" value="<%= cart[product].quantity %>" min="0" class="recap__quantity">
                                 <a href="#" class="recap__delete">Supprimer</a>
                             </td>
-                            <td class="recap__cell">
+                            <td class="recap__cell total__cell">
                                 <% const quantity = cart[product].quantity; %>
                                 <% const totalPrice = cart[product].price * quantity; %>
-                                <%= totalPrice %>  €</td>
-                        </tr>
+                                <em class="total__price"><%= totalPrice %></em> €</td>
+                            </tr>
                     
                     <% } %>
                     
@@ -56,16 +56,24 @@
             <tfoot class="recap__foot">
                 <tr class="recap__row">
                     <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products">1 produit(s)</span></th>
-                    <td class="recap__cell-total-price" colspan="2"><span class="recap__total_price-text">Total de la commande :</span> <span class="recap__total_price-number"> 30 €</span></td>
+                    <td class="recap__cell-total-price" colspan="2"><span class="recap__total_price-text">Total de la commande :</span> <span id="recap__total_price-number">
+                        <% let total = 0 %>
+                        <% for( const product in cart) {%>
+                        <% total = total + cart[product].price * cart[product].quantity %> 
+                        <%}%>
+                        <%= total %>
+                    </span>€</td>
                 </tr>
             </tfoot>
         </table>
 
         <div class="cart__btn">
-            <button type="submit" class="btn__submit">Passer la commande</button>
+            <button type="submit" class="btn__submit" disabled>Passer la commande</button>
         </div>
 
     </form>
+
+    <div class="go__back" ><a id="go__back"href="#">Retour au catalogue</a></div>
 
     </section>
 
