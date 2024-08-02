@@ -100,41 +100,20 @@ if (goBackLink) {
 // gestion du panier (mise à jour de l'affichage du prix total)
 
 
-// * récupération des prix des articles dans un array et transformation en Float
-
-const pricesAsStr = document.querySelectorAll('.price');
-const pricesAsNb = []
-
-//* Récupération des quantités 
-
-const quantitiesAsStr = document.querySelectorAll('.quantity')
-
-//* Récupération dans le DOM du prix total affiché
-
-const recapPrice = document.querySelector('#recap__total_price-number');
 
 //* Fonction pour modifier l'affichage du prix total 
 
-let total = 0;
 
 function showTotalPrice() {
-    const quantitiesAsNb = [];
+    const recapPrice = document.querySelector('#recap__total_price-number');
+    const subtotals = document.querySelectorAll('.total__price');
 
-    pricesAsStr.forEach(price => {
-        const priceAsNb = Number.parseFloat(price.textContent);
-        pricesAsNb.push(priceAsNb);
+    let total = 0;
+
+    subtotals.forEach(nb => {
+        total = total + Number.parseFloat(nb.textContent);
     });
 
-    quantitiesAsStr.forEach(quantity => {
-        const quantityAsNb = Number.parseFloat(quantity.value);
-        quantitiesAsNb.push(quantityAsNb);
-    });
-
-    for (let i = 0; i < pricesAsNb.length; i++) {
-        console.log(pricesAsNb[i], quantitiesAsNb[i]);
-        total = total + pricesAsNb[i] * quantitiesAsNb[i];
-
-    };
     recapPrice.textContent = total.toString();
 }
 
@@ -143,69 +122,71 @@ function showTotalPrice() {
 const raws = document.querySelectorAll('.recap__row-product');
 
 function showSubtotalPrice() {
+
+
     raws.forEach(raw => {
         const price = Number.parseFloat(raw.querySelector('.price').textContent);
         const quantity = Number.parseInt(raw.querySelector('.quantity').value);
         const subtotal = price * quantity;
-        console.log(quantity, price, subtotal)
         raw.querySelector('.total__price').textContent = subtotal.toString();
 
     });
 }
 
-if (quantitiesAsStr) {
-    quantitiesAsStr.forEach(quantity => {
+// *Afficher le nombre d'article dans le panier
+
+
+
+function showNumberOfProduct() {
+    const quantitiesAsStr = Array.from(document.querySelectorAll('.quantity'));
+    const quantitiesAsNb = quantitiesAsStr.map((quantity) => parseInt(quantity.value));
+
+    console.log(quantitiesAsStr, quantitiesAsNb)
+
+    let numberOfProduct = 0;
+
+    if (!quantitiesAsNb.length){
+        document.querySelector('#recap__total_products').textContent = `0 produit`;
+    } else {
+        quantitiesAsNb.forEach(quantity => {
+            numberOfProduct += quantity;
+            console.log(numberOfProduct);
+            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit(s)`;
+        });
+    };
+}
+
+//* Fonction générale de mise à jour des totaux 
+
+function showTotals(){
+    showSubtotalPrice();
+    showTotalPrice();
+    showNumberOfProduct();
+};
+
+
+// Event Listeners 
+
+if (document.querySelectorAll('.quantity').length > 0) {
+    const quantities = document.querySelectorAll('.quantity');
+
+    quantities.forEach(quantity => {
         quantity.addEventListener('change', () => {
-            showTotalPrice();
-            showSubtotalPrice();
-            showNumberOfProduct();
+            showTotals();
         })
     });
 };
 
-//---------------------
-
-// *Afficher le nombre d'article dans le panier
-
-let numberOfProduct = 0;
-
-function showNumberOfProduct() {
-
-    if (quantitiesAsStr.length === 0){
-        document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit`;
-    } else {quantitiesAsStr.forEach(quantity => {
-        numberOfProduct += Number.parseInt(quantity.value);
-        console.log(numberOfProduct)
-        if (numberOfProduct === 1) {
-            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit`;
-        } else {
-            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produits`;
-        }
-    });
-    }
-    }
-
-if(quantitiesAsStr.length > 0){
-    showNumberOfProduct();
-};    
-    
-    // Pour l'instant j'ai ajouté à l'event listener sur les quantités la modification des nombres de produit, en attendant de faire un objet pour réorganiser
-    
-
-
-
-
 //------------------
 
 // Supprimer l'article du panier
-
-
 
 if (raws) {
     raws.forEach(raw => {
         raw.querySelector('.recap__delete').addEventListener('click', (event) => {
             event.preventDefault();
             raw.remove();
+            showTotals();
         }
         );
     }
@@ -213,8 +194,6 @@ if (raws) {
 };
 
 
-// surveiller les quantités : variable qui se met à jour 
 
-//gérer le bug où on garde la quantité quand on supprime
 
 
