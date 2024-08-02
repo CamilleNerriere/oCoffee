@@ -1,4 +1,6 @@
 
+
+
 // gestion du menu déroulant en responsive 
 
 
@@ -80,118 +82,10 @@ if (categorySelect) {
 };
 
 
-// --------------------------Page article---------------------------------
 
-// gestion retour page précédente
+document.addEventListener('DOMContentLoaded', goBack.init);
+document.addEventListener('DOMContentLoaded', cart.init);
 
-const goBackLink = document.getElementById('go__back');
-
-if (goBackLink) {
-
-    goBackLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        console.log('coucou');
-        history.back();
-    });
-}
-
-// ---------------------------Page Panier-------------------------------
-
-// gestion du panier (mise à jour de l'affichage du prix total)
-
-
-
-//* Fonction pour modifier l'affichage du prix total 
-
-
-function showTotalPrice() {
-    const recapPrice = document.querySelector('#recap__total_price-number');
-    const subtotals = document.querySelectorAll('.total__price');
-
-    let total = 0;
-
-    subtotals.forEach(nb => {
-        total = total + Number.parseFloat(nb.textContent);
-    });
-
-    recapPrice.textContent = total.toString();
-}
-
-// Modifier les sous-totaux 
-
-const raws = document.querySelectorAll('.recap__row-product');
-
-function showSubtotalPrice() {
-
-
-    raws.forEach(raw => {
-        const price = Number.parseFloat(raw.querySelector('.price').textContent);
-        const quantity = Number.parseInt(raw.querySelector('.quantity').value);
-        const subtotal = price * quantity;
-        raw.querySelector('.total__price').textContent = subtotal.toString();
-
-    });
-}
-
-// *Afficher le nombre d'article dans le panier
-
-
-
-function showNumberOfProduct() {
-    const quantitiesAsStr = Array.from(document.querySelectorAll('.quantity'));
-    const quantitiesAsNb = quantitiesAsStr.map((quantity) => parseInt(quantity.value));
-
-    console.log(quantitiesAsStr, quantitiesAsNb)
-
-    let numberOfProduct = 0;
-
-    if (!quantitiesAsNb.length){
-        document.querySelector('#recap__total_products').textContent = `0 produit`;
-    } else {
-        quantitiesAsNb.forEach(quantity => {
-            numberOfProduct += quantity;
-            console.log(numberOfProduct);
-            document.querySelector('#recap__total_products').textContent = `${numberOfProduct} produit(s)`;
-        });
-    };
-}
-
-//* Fonction générale de mise à jour des totaux 
-
-function showTotals(){
-    showSubtotalPrice();
-    showTotalPrice();
-    showNumberOfProduct();
-};
-
-
-// Event Listeners 
-
-if (document.querySelectorAll('.quantity').length > 0) {
-    const quantities = document.querySelectorAll('.quantity');
-
-    quantities.forEach(quantity => {
-        quantity.addEventListener('change', () => {
-            showTotals();
-        })
-    });
-};
-
-//------------------
-
-// Supprimer l'article du panier
-
-if (raws) {
-    raws.forEach(raw => {
-        raw.querySelector('.recap__delete').addEventListener('click', (event) => {
-            event.preventDefault();
-            raw.remove();
-            showTotals();
-        }
-        );
-    }
-    );
-};
 
 
 
