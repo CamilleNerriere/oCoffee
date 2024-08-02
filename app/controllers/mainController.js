@@ -41,7 +41,10 @@ const mainController = {
 
             res.send(error.message);
         };
-    }, 
+    },
+    shop(req, res){
+        res.render('shop');
+    }
 
 };
 

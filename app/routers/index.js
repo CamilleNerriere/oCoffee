@@ -14,4 +14,6 @@ router.get('/cart', cartController.cartPage);
 
 router.get('/cart/:id', cartController.addTocart);
 
+router.get('/boutique', mainController.shop);
+
 module.exports = router;
