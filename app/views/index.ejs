@@ -5,23 +5,22 @@
         <section class="section presentation">
             <div class="presentation__about">
                 <div class="presentation__about__text">
-                    <h2 class="section__title">Qui sommes-nous ?</h2>
+                    <h2 class="section__title">&#x2015; Qui sommes-nous ? &#x2015;</h2>
                     <p class="presentation__about__text__paragraph">Jean et Jacques Pepper, deux frères passionnés
-                        par le café, sont les fondateurs de notre
-                        boutique. Avec une expertise approfondie et un amour profond pour cette délicieuse boisson,
+                        par le café, sont les fondateurs de notre boutique. Avec une expertise approfondie et un amour profond pour cette délicieuse boisson,
                         ils ont créé un espace où le café est célébré comme une expérience raffinée et inspirante.
                     </p>
                 </div>
                 <div class="presentation__about__btn">
-                    <a href="/articles" class="btn__link--catalog">Voir le catalogue</a>
+                    <a href="/articles" class="btn__link--about">A propos</a>
                 </div>
             </div>
 
-            <img class="presentation__image" src="/img/about.webp" alt="">
+            <!-- <img class="presentation__image" src="/img/about.webp" alt=""> -->
         </section>
 
         <section class="section news">
-            <h2 class="section__title">Nouveautés</h2>
+            <h2 class="section__title news__title"> &#x2015; Nouveautés &#x2015; </h2>
 
             <div class="articles">
 
@@ -32,11 +31,13 @@
                         <div class="article__img__container">
                             <img class="article__img" src="/img/coffees/compressed/<%= coffees[index].reference %>.webp" alt="">
                         </div>
+                        <div class="article__text__container">
                         <div class="article__description">
                             <h3 class="article__title"><%= coffees[index].name %></h3>
                             <p><%= coffees[index].description %></p>
                         </div>
-                        <div class="article__btn"><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
+                        <div class="article__btn__container"><a class="article__btn" href="/article/<%= coffees[index].id %>">Découvrir</a></div>
+                        </div>
                     </div>
                 <% } %>
 
@@ -46,6 +47,11 @@
                     <% } %>
                         
             </div> 
+
+            <div class="articles__btn__container">
+                <a href="/articles" class="btn__link--catalog">Voir le catalogue</a>
+            </div>
+
         </div>
         </section>
 
