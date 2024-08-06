@@ -1,19 +1,22 @@
 const router = require('express').Router(); 
 
-const mainController = require('../controllers/mainController'); 
+const {mainController} = require('../controllers/mainController'); 
 
-const cartController = require('../controllers/cartController'); 
+const {cartController} = require('../controllers/cartController'); 
 
-router.get('/', mainController.homePage); 
+const { catchErrors } = require('../middlewares/errorHandlers');
 
-router.get('/articles', mainController.articles);
 
-router.get('/article/:id', mainController.article);
+router.get('/', catchErrors(mainController.homePage)); 
 
-router.get('/cart', cartController.cartPage);
+router.get('/articles', catchErrors(mainController.articles));
 
-router.get('/cart/:id', cartController.addTocart);
+router.get('/article/:id', catchErrors(mainController.article));
 
-router.get('/boutique', mainController.shop);
+router.get('/cart', catchErrors(cartController.cartPage));
+
+router.get('/cart/:id', catchErrors(cartController.addTocart));
+
+router.get('/boutique', catchErrors(mainController.shop));
 
 module.exports = router;

@@ -15,6 +15,13 @@ const app = express();
 
 const session = require('express-session');
 
+// import des middlewares de gestion d'erreur 
+
+const {
+  notFound,
+  errorHandler,
+} = require('./app/middlewares/errorHandlers');
+
 // import du router 
 
 const router = require('./app/routers'); 
@@ -52,12 +59,10 @@ app.use(session({
 // branchement du router
 
 app.use(router); 
-
-// middleware 404 à importer et créer dans les middlewares
-
-const notFound = require('./app/middlewares/404')
-
+//middleware 404 qui lève une erreur 404
 app.use(notFound); 
+//middlware global de gestion d'erreur
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000; 
 

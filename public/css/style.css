@@ -6,6 +6,7 @@
     --button-text:#ffffff;
     --lighter-brown:#f5ecec; 
     --font-text: "Raleway", sans-serif;
+    --second-font-text: "Cormorant Garamond", serif;
 }
 
 body {
@@ -118,8 +119,14 @@ body {
 .section__title{
     font-size:2em;
     color:var(--dark-brown);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
     text-align: center;
+    font-family: var(--second-font-text);
+    font-weight:300;
+}
+
+.special-character{
+    font-weight:300;
 }
 
 .news__title {
@@ -148,7 +155,7 @@ body {
     top: 50%;
     z-index: 3;
     background-color:  #cdcdcaa4;
-    padding:1.2em;
+    padding:1em 1.2em 1.5em;
 }
 
 .article__img__container{
@@ -166,7 +173,8 @@ body {
 .article__title{
     font-size: 1.5em;
     font-weight:600em;
-    margin-bottom: 1em;;
+    margin-bottom: 0.8em;
+    font-family: var(--second-font-text);
 }
 .article__description{
     margin: 1em 0 1.5em;

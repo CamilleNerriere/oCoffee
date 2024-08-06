@@ -8,8 +8,12 @@
             <div>
 
                 <div class="detail__article">
-                    <h3 class="article__title">Erreur 404</h3>
-                    <p>Page non trouvée</p>
+                    <h3 class="article__title">Erreur <%= status %></h3>
+                    <p><%= error %></p>
+                    <!-- pour le développement -->
+                    <% if (locals.stack) { %>
+                        <pre><%= stack %></pre>
+                     <% } %>
                 </div>
                 <div class="show__catalog"><a class="show__catalog__btn" href="/">Accueil</a></div>
             </div>

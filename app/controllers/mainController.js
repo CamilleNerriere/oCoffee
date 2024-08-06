@@ -2,50 +2,36 @@ const dataMapper = require('../database/dataMapper');
 
 const mainController = {
     async homePage(req, res) {
-        try {
-            const coffees = await dataMapper.getCoffees();
-            res.render('index', {coffees : coffees});
-        } catch (error) {
-            console.log('NAME', error.name);
-            console.log('CAUSE', error.cause);
-            console.log('STACK', error.stack);
 
-            res.send(error.message);
-        };
-        
-    }, 
-    async articles(req,res) {
-        try {
-            const coffees = await dataMapper.getCoffees();
-            const categories = await dataMapper.getCoffeesCategories();
-    
-            res.render('articles', {coffees, categories});
-        } catch (error) {
-            console.log('NAME', error.name);
-            console.log('CAUSE', error.cause);
-            console.log('STACK', error.stack);
+        const coffees = await dataMapper.getCoffees();
+        res.render('index', { coffees: coffees });
 
-            res.send(error.message);
-        };
-        
-    }, 
-    async article(req, res){
-        try {
-            const id = req.params.id;
-            const coffee = await dataMapper.getOneCoffeeById(id);
-            res.render('article', {coffee});
-        } catch (error) {
-            console.log('NAME', error.name);
-            console.log('CAUSE', error.cause);
-            console.log('STACK', error.stack);
-
-            res.send(error.message);
-        };
     },
-    shop(req, res){
+    async articles(req, res) {
+
+        const coffees = await dataMapper.getCoffees();
+        const categories = await dataMapper.getCoffeesCategories();
+
+        res.render('articles', { coffees, categories });
+
+    },
+    async article(req, res, next) {
+
+        const id = req.params.id;
+        const coffeeId = /\d+$/.test(id);
+
+        if(!coffeeId){
+            return next();
+        }
+
+        const coffee = await dataMapper.getOneCoffeeById(id);
+        res.render('article', { coffee });
+
+    },
+    shop(req, res) {
         res.render('shop');
     }
 
 };
 
-module.exports = mainController; 
+module.exports = { mainController }; 
