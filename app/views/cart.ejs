@@ -1,94 +1,110 @@
 <%- include('partials/header') %>
 
-<main>
-    <h2 class="cart__title"> Votre panier</h2>
+    <main>
+        <div class="cart__container">
+            <h2 class="cart__title"> Votre panier</h2>
 
-    <section class="cart__section">
+            <section class="cart__section">
 
-        <form action="" method="post" class="cart__form">
-            
-        
+                <form action="" method="post" class="cart__form">
 
-        <table class="recap">
-            <thead class="recap__head">
-                <tr class="recap__row">
-                    <th class="recap__cell-head">Vos produits</th>
-                    <th class="recap__cell-head">Prix unitaire</th>
-                    <th class="recap__cell-head">Quantité</th>
-                    <th class="recap__cell-head">Sous-total</th>
-                </tr>
-            </thead>
 
-          
 
-            <tbody class="recap__body">
-
-                <% if(locals.cart) {%>
-
-                    <% for( const product in cart) {%>
-                    
-                        <tr class="recap__row-product">
-                            <td class="recap__cell-product">
-                                <div class="cell__flex">
-                                    <div class="product__image__container"><img class="product__image" src="/img/coffees/compressed/<%= cart[product].reference %>.webp" alt=""></div>
-                                    <div class="product__title"> <%= cart[product].name %> </div>
-                                </div>
-                                
-                            </td>
-                            <td class="recap__cell"><em class="price"><%= cart[product].price %></em> €</td>
-                            <td class="recap__cell">
-                                <label class="recap__label sr-only" for="quantity_<%= cart[product].id%>">Quantité produit 1</label>
-                                <input type="select" class="quantity" id="quantity_<%= cart[product].id%>" name="quantities[<%= cart[product].id%>]" value="<%= cart[product].quantity %>" min="0" class="recap__quantity">
-                                <a href="#" class="recap__delete">Supprimer</a>
-                            </td>
-                            <td class="recap__cell total__cell">
-                                <% const quantity = cart[product].quantity; %>
-                                <% const totalPrice = cart[product].price * quantity; %>
-                                <em class="total__price"><%= totalPrice %></em> €</td>
+                    <table class="recap">
+                        <thead class="recap__head">
+                            <tr class="recap__row">
+                                <th class="recap__cell-head">Vos produits</th>
+                                <th class="recap__cell-head">Prix unitaire</th>
+                                <th class="recap__cell-head">Quantité</th>
+                                <th class="recap__cell-head">Sous-total</th>
                             </tr>
-                    
-                    <% } %>
-                    
-            <% } %>
+                        </thead>
 
-            </tbody>
 
-            <tfoot class="recap__foot">
-                <tr class="recap__row">
-                    <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products" id="recap__total_products">
-                        <% let totalOfProduct = 0; %>
-                        <% if(locals.cart) {%>
-                            
-                            <% for( const product in cart) {%>
-                                <%totalOfProduct += cart[product].quantity %>
-                            <% }; %>
-                            <% }; %>
-                            <%= totalOfProduct %> Produit(s)
-                    </span></th>
-                    <td class="recap__cell-total-price" colspan="2"><span class="recap__total_price-text">Total de la commande :</span> <span id="recap__total_price-number">
-                        <% let total = 0 %>
-                        <% if(locals.cart){ %>
-                            <% for( const product in locals.cart) {%>
-                            <% total = total + cart[product].price * cart[product].quantity %> 
-                            <%}%>
-                            <%= total %>
-                        <% } %>
-                    </span>€</td>
-                </tr>
-            </tfoot>
-        </table>
 
-        <div class="cart__btn">
-            <button type="submit" class="btn__submit" disabled>Passer la commande</button>
+                        <tbody class="recap__body">
+
+                            <% if(locals.cart) {%>
+
+                                <% for( const product in cart) {%>
+
+                                    <tr class="recap__row-product">
+                                        <td class="recap__cell-product">
+                                            <div class="cell__flex">
+                                                <div class="product__image__container"><img class="product__image"
+                                                        src="/img/coffees/compressed/<%= cart[product].reference %>.webp"
+                                                        alt=""></div>
+                                                <div class="product__title">
+                                                    <%= cart[product].name %>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td class="recap__cell"><em class="price">
+                                                <%= cart[product].price %>
+                                            </em> €</td>
+                                        <td class="recap__cell">
+                                            <label class="recap__label sr-only"
+                                                for="quantity_<%= cart[product].id%>">Quantité produit 1</label>
+                                            <input type="select" class="quantity" id="quantity_<%= cart[product].id%>"
+                                                name="quantities[<%= cart[product].id%>]"
+                                                value="<%= cart[product].quantity %>" min="0" class="recap__quantity">
+                                            <a href="#" class="recap__delete">Supprimer</a>
+                                        </td>
+                                        <td class="recap__cell total__cell">
+                                            <% const quantity=cart[product].quantity; %>
+                                                <% const totalPrice=cart[product].price * quantity; %>
+                                                    <em class="total__price">
+                                                        <%= totalPrice %>
+                                                    </em> €
+                                        </td>
+                                    </tr>
+
+                                    <% } %>
+
+                                        <% } %>
+
+                        </tbody>
+
+                        <tfoot class="recap__foot">
+                            <tr class="recap__row">
+                                <th class="recap__cell-total-price" colspan="2"><span class="recap__total_products"
+                                        id="recap__total_products">
+                                        <% let totalOfProduct=0; %>
+                                            <% if(locals.cart) {%>
+
+                                                <% for( const product in cart) {%>
+                                                    <%totalOfProduct +=cart[product].quantity %>
+                                                        <% }; %>
+                                                            <% }; %>
+                                                                <%= totalOfProduct %> Produit(s)
+                                    </span></th>
+                                <td class="recap__cell-total-price" colspan="2"><span
+                                        class="recap__total_price-text">Total de la commande :</span> <span
+                                        id="recap__total_price-number">
+                                        <% let total=0 %>
+                                            <% if(locals.cart){ %>
+                                                <% for( const product in locals.cart) {%>
+                                                    <% total=total + cart[product].price * cart[product].quantity %>
+                                                        <%}%>
+                                                            <%= total %>
+                                                                <% } %>
+                                    </span>€</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="cart__btn">
+                        <button type="submit" class="btn__submit" disabled>Passer la commande</button>
+                    </div>
+
+                </form>
+
+                <div class="go__back"><a id="go__back" href="#">Retour au catalogue</a></div>
+
+            </section>
+
         </div>
+    </main>
 
-    </form>
-
-    <div class="go__back" ><a id="go__back"href="#">Retour au catalogue</a></div>
-
-    </section>
-
-
-</main>
-
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

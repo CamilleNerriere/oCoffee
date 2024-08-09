@@ -39,11 +39,13 @@
                                 <div class="article__img__container">
                                     <img class="article__img" src="/img/coffees/compressed/<%= coffees[index].reference %>.webp" alt="">
                                 </div>
-                                <div class="article__description">
-                                    <h3 class="article__title"><%= coffees[index].name %></h3>
-                                    <p><%= coffees[index].description %></p>
+                                <div class="article__text__container">
+                                    <div class="article__description">
+                                        <h3 class="article__title"><%= coffees[index].name %></h3>
+                                        <p><%= coffees[index].description %></p>
+                                    </div>
+                                    <div class="article__btn" ><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
                                 </div>
-                                <div class="article__btn" ><a href="/article/<%= coffees[index].id %>">Découvrir</a></div>
                             </div>
                         <% } %>
                     <% } else { %>

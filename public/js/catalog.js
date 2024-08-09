@@ -43,7 +43,5 @@ const catalog = {
                 
             };
         
-            const btn = document.querySelector('#show__more__btn a');
-            btn.classList.add('show__more');
         },
 };
