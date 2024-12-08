@@ -2,8 +2,8 @@
 
 ## Information du projet
 
-[Le projet](./docs/demande-client/)
+Projet réalisé dans un cadre de formation. O'Coffee est un site vitrine fictif pour une boutique de vente de café. 
 
-## Remarques pédagogiques et rendus
+## Information on the project 
 
-[Recommandations](./docs/recommandations/)
+Project done as part of a training course. O'Coffee is a fictitious showcase site for a coffee shop. 
